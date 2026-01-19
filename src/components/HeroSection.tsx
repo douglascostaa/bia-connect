@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import logoImage from "@/assets/logo-bia.png";
-import biaAvatar from "@/assets/bia-avatar.png";
-import { Button } from "@/components/ui/button";
+import biaHero from "@/assets/bia-hero.png";
 
 interface HeroSectionProps {
   onOpenChat: () => void;
@@ -15,81 +14,106 @@ const HeroSection = ({ onOpenChat, isChatOpen }: HeroSectionProps) => {
         isChatOpen ? "w-[55%]" : "w-full"
       }`}
     >
-      {/* Background elements */}
-      <div className="absolute inset-0 geometric-pattern opacity-30" />
-      <div className="floating-orb w-[600px] h-[600px] -top-40 -left-40" />
-      <div className="floating-orb w-[400px] h-[400px] bottom-0 right-1/4 opacity-10" />
+      {/* Main gradient background */}
+      <div className="absolute inset-0 hero-gradient" />
 
+      {/* Right accent stripe */}
+      <div className="absolute right-0 top-0 bottom-0 w-1/3 hero-stripe hidden lg:block" />
+      
       {/* Geometric decorations */}
-      <div className="absolute top-20 right-20 w-32 h-32 border border-primary/20 rounded-3xl rotate-12 hidden lg:block" />
-      <div className="absolute bottom-32 right-40 w-20 h-20 border border-primary/10 rounded-2xl -rotate-6 hidden lg:block" />
+      <div className="floating-shape w-48 h-48 top-16 right-[15%] rotate-12 hidden xl:block" />
+      <div className="floating-shape w-32 h-32 bottom-24 right-[25%] -rotate-6 hidden xl:block" />
+      <div className="floating-shape w-24 h-24 top-1/3 right-[10%] rotate-45 hidden xl:block" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full h-full px-8 lg:px-16 xl:px-24 py-12">
-        {/* Left content */}
-        <div className="flex flex-col justify-center gap-8 max-w-xl lg:max-w-lg xl:max-w-xl">
-          {/* Logo */}
-          <div className="flex items-center gap-4">
-            <img src={logoImage} alt="BIA" className="w-12 h-12 rounded-xl" />
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-semibold text-foreground">—</span>
-              <span className="text-xl font-medium text-foreground tracking-wide">flash</span>
+      {/* Large logo decoration in background */}
+      <div className="absolute right-[5%] top-1/2 -translate-y-1/2 hidden xl:flex items-center justify-center">
+        <div className="relative">
+          <div className="w-72 h-72 logo-decoration" />
+          <div className="absolute inset-4 logo-decoration" />
+          <div className="absolute inset-8 logo-decoration" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-8xl font-bold opacity-10 text-hero-dark">b!</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Content layout */}
+      <div className="relative z-10 flex w-full h-full">
+        {/* Left content area */}
+        <div className="flex flex-col justify-between py-10 px-8 lg:px-12 xl:px-16 w-full lg:w-1/2 xl:w-[45%]">
+          {/* Header with logo */}
+          <div className="flex items-center gap-4 animate-fade-up">
+            <img src={logoImage} alt="BIA" className="w-14 h-14 rounded-xl shadow-lg" />
+            <div className="flex items-center gap-3">
+              <span className="text-2xl text-hero-dark font-light">—</span>
+              <span className="text-2xl font-semibold text-hero-dark tracking-wide">flash</span>
             </div>
           </div>
 
-          {/* Headline */}
-          <div className="space-y-2">
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-              <span className="text-primary glow-text">Respostas</span>
+          {/* Main headline */}
+          <div className="space-y-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+            <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-hero-dark">
+              <span className="italic">Respostas na</span>
               <br />
-              <span className="text-foreground">na velocidade</span>
+              <span className="italic">velocidade que o</span>
               <br />
-              <span className="text-foreground">que o seu cliente</span>
+              <span className="italic">seu cliente</span>
               <br />
-              <span className="text-foreground">espera</span>
+              <span className="italic">espera</span>
             </h1>
+
+            {/* BIA tagline */}
+            <div className="space-y-1">
+              <p className="text-2xl font-bold text-hero-dark">@bia</p>
+              <p className="text-lg text-hero-medium">feita para seu negócio</p>
+            </div>
+
+            {/* CTA Button */}
+            <button
+              onClick={onOpenChat}
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-white/95 hover:bg-white text-hero-dark font-semibold text-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02]"
+            >
+              Falar com a BIA
+              <span className="flex items-center justify-center w-8 h-8 bg-primary rounded-full transition-transform group-hover:translate-x-1">
+                <ArrowRight className="w-4 h-4 text-white" />
+              </span>
+            </button>
           </div>
 
-          {/* BIA info */}
-          <div className="space-y-1">
-            <p className="text-2xl font-bold text-primary">@bia</p>
-            <p className="text-muted-foreground">feita para seu negócio</p>
-          </div>
-
-          {/* CTA Button */}
-          <Button
-            onClick={onOpenChat}
-            size="lg"
-            className="group w-fit px-8 py-6 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-button transition-all duration-300 hover:shadow-glow-lg hover:scale-105"
-          >
-            Falar com a BIA
-            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Button>
+          {/* Bottom spacer */}
+          <div />
         </div>
 
-        {/* Right content - Avatar */}
-        <div className="relative flex-shrink-0 hidden lg:block">
-          {/* Glow effect behind avatar */}
-          <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75" />
+        {/* Right image area */}
+        <div className="hidden lg:flex flex-1 items-end justify-center relative">
+          <img
+            src={biaHero}
+            alt="BIA - Assistente Virtual Inteligente"
+            className="h-[90%] w-auto object-contain object-bottom relative z-10 drop-shadow-2xl animate-fade-up"
+            style={{ animationDelay: '0.2s' }}
+          />
           
-          {/* Avatar image */}
-          <div className="relative">
-            <img
-              src={biaAvatar}
-              alt="BIA - Assistente Virtual"
-              className="w-80 xl:w-96 h-auto object-contain relative z-10 drop-shadow-2xl"
-            />
-            
-            {/* Decorative ring */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-primary/10 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] border border-primary/5 rounded-full" />
+          {/* Online status badge */}
+          <div 
+            className="absolute top-24 right-8 xl:right-16 glass-yellow rounded-2xl px-5 py-3 shadow-lg animate-float z-20"
+            style={{ animationDelay: '-2s' }}
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm font-semibold text-hero-dark">Online agora</span>
+            </div>
           </div>
 
-          {/* Floating badge */}
-          <div className="absolute -right-4 top-1/4 glass rounded-2xl px-4 py-3 animate-float">
+          {/* AI indicator badge */}
+          <div 
+            className="absolute bottom-32 right-4 xl:right-12 glass-yellow rounded-2xl px-5 py-3 shadow-lg animate-float z-20"
+          >
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-sm font-medium text-foreground">Online</span>
+              <span className="text-2xl">🤖</span>
+              <div>
+                <p className="text-sm font-semibold text-hero-dark">IA Conversacional</p>
+                <p className="text-xs text-hero-medium">Respostas instantâneas</p>
+              </div>
             </div>
           </div>
         </div>

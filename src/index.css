@@ -6,60 +6,68 @@
 
 @layer base {
   :root {
-    /* Futuristic dark theme with vibrant yellow accent */
-    --background: 220 20% 8%;
-    --foreground: 60 100% 97%;
+    /* Vibrant Yellow Theme - Brand Colors */
+    --background: 42 100% 50%;
+    --foreground: 0 0% 10%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 60 100% 97%;
+    --card: 42 100% 55%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 220 20% 10%;
-    --popover-foreground: 60 100% 97%;
+    --popover: 42 100% 52%;
+    --popover-foreground: 0 0% 10%;
 
-    /* Vibrant Yellow - Brand Color */
-    --primary: 48 100% 50%;
-    --primary-foreground: 220 20% 8%;
+    /* Primary - Deep Yellow/Orange */
+    --primary: 38 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 60 100% 97%;
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 42 80% 45%;
+    --muted-foreground: 0 0% 20%;
 
-    --accent: 48 100% 45%;
-    --accent-foreground: 220 20% 8%;
+    --accent: 48 100% 65%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 60 100% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 25%;
-    --ring: 48 100% 50%;
+    --border: 42 60% 40%;
+    --input: 42 60% 45%;
+    --ring: 38 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --glow-primary: 48 100% 50%;
-    --glow-opacity: 0.3;
+    /* Custom tokens for the hero */
+    --hero-left: 38 100% 52%;
+    --hero-right: 48 100% 55%;
+    --hero-accent: 50 100% 60%;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(48 100% 50%) 0%, hsl(38 100% 50%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 25% 5%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsla(0 0% 100% / 0.1) 0%, hsla(0 0% 100% / 0.05) 100%);
+    /* Glass effect on yellow */
+    --glass-bg: 48 100% 60%;
     
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsla(48 100% 50% / 0.3);
-    --shadow-soft: 0 8px 32px hsla(0 0% 0% / 0.3);
-    --shadow-button: 0 4px 20px hsla(48 100% 50% / 0.4);
+    /* Dark text colors */
+    --text-dark: 0 0% 10%;
+    --text-medium: 0 0% 25%;
 
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 60 100% 97%;
-    --sidebar-primary: 48 100% 50%;
-    --sidebar-primary-foreground: 220 20% 8%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 60 100% 97%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 48 100% 50%;
+    /* Shadows */
+    --shadow-soft: 0 8px 32px hsla(38, 100%, 30%, 0.2);
+    --shadow-button: 0 4px 20px hsla(0, 0%, 0%, 0.15);
+
+    --sidebar-background: 42 100% 50%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 38 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 48 100% 60%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 42 60% 40%;
+    --sidebar-ring: 38 100% 50%;
+    
+    /* Chat panel - dark theme */
+    --chat-bg: 220 20% 8%;
+    --chat-foreground: 0 0% 95%;
+    --chat-muted: 220 15% 25%;
+    --chat-border: 220 15% 20%;
   }
 }
 
@@ -79,36 +87,66 @@
 }
 
 @layer components {
-  .glass {
-    @apply bg-secondary/40 backdrop-blur-xl border border-white/10;
+  /* Hero gradient background */
+  .hero-gradient {
+    background: linear-gradient(135deg, 
+      hsl(38 100% 52%) 0%, 
+      hsl(42 100% 50%) 30%,
+      hsl(45 100% 52%) 60%,
+      hsl(48 100% 55%) 100%
+    );
   }
 
-  .glass-light {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  /* Vertical stripe accent */
+  .hero-stripe {
+    background: linear-gradient(180deg, 
+      hsl(48 100% 58%) 0%, 
+      hsl(50 100% 62%) 100%
+    );
   }
 
-  .glow-text {
-    text-shadow: 0 0 30px hsla(48, 100%, 50%, 0.5);
+  /* Glass effect for yellow background */
+  .glass-yellow {
+    @apply bg-white/90 backdrop-blur-sm;
   }
 
-  .glow-box {
-    box-shadow: var(--shadow-glow);
+  /* Geometric logo decoration */
+  .logo-decoration {
+    @apply border-2 rounded-3xl opacity-20;
+    border-color: hsl(50 100% 65%);
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  /* Floating elements */
+  .floating-shape {
+    @apply absolute rounded-[2rem] border-2 opacity-15;
+    border-color: hsl(50 100% 70%);
   }
 
-  .geometric-pattern {
-    background-image: 
-      linear-gradient(hsla(48, 100%, 50%, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsla(48, 100%, 50%, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+  /* Text styles for dark text on yellow */
+  .text-hero-dark {
+    color: hsl(0 0% 10%);
   }
 
-  .floating-orb {
-    @apply absolute rounded-full blur-3xl opacity-20;
-    background: radial-gradient(circle, hsl(48 100% 50%) 0%, transparent 70%);
+  .text-hero-medium {
+    color: hsl(0 0% 25%);
+  }
+
+  /* Chat panel dark theme */
+  .chat-dark {
+    background: hsl(220 20% 8%);
+    color: hsl(0 0% 95%);
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl border;
+    background: hsla(220, 20%, 12%, 0.9);
+    border-color: hsla(0, 0%, 100%, 0.1);
+  }
+
+  .glass-message {
+    @apply backdrop-blur-lg border;
+    background: hsla(0, 0%, 100%, 0.05);
+    border-color: hsla(0, 0%, 100%, 0.1);
   }
 }
 
@@ -136,21 +174,25 @@
   .animate-scale-in {
     animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-15px); }
 }
 
 @keyframes pulse-glow {
   0%, 100% { 
     opacity: 1;
-    box-shadow: 0 0 20px hsla(48, 100%, 50%, 0.4);
+    transform: scale(1);
   }
   50% { 
-    opacity: 0.8;
-    box-shadow: 0 0 40px hsla(48, 100%, 50%, 0.6);
+    opacity: 0.9;
+    transform: scale(1.02);
   }
 }
 
@@ -181,6 +223,17 @@
   to { opacity: 1; }
 }
 
+@keyframes fade-up {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes scale-in {
   from { 
     transform: scale(0.9);
@@ -202,10 +255,10 @@
 }
 
 .chat-scrollbar::-webkit-scrollbar-thumb {
-  background: hsla(48, 100%, 50%, 0.3);
+  background: hsla(42, 100%, 50%, 0.4);
   border-radius: 3px;
 }
 
 .chat-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: hsla(48, 100%, 50%, 0.5);
+  background: hsla(42, 100%, 50%, 0.6);
 }
