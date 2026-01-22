@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, Zap, MessageCircle } from "lucide-react";
+import { ArrowRight, Zap, Clock, MessageSquare, Shield } from "lucide-react";
 import logoImage from "@/assets/logo-bia.png";
 import biaHero from "@/assets/bia-hero.png";
 
@@ -10,164 +10,131 @@ interface HeroSectionProps {
 const HeroSection = ({ onOpenChat, isChatOpen }: HeroSectionProps) => {
   return (
     <div
-      className={`relative h-full flex transition-all duration-700 ease-out ${
+      className={`relative h-full flex transition-all duration-500 ease-out ${
         isChatOpen ? "w-0 md:w-[55%] lg:w-[60%]" : "w-full"
       } ${isChatOpen ? "opacity-0 md:opacity-100" : "opacity-100"}`}
     >
-      {/* Main gradient background */}
-      <div className="absolute inset-0 hero-gradient" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-dark-gradient" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
 
-      {/* Animated particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="particle particle-1" />
-        <div className="particle particle-2" />
-        <div className="particle particle-3" />
-        <div className="particle particle-4" />
-        <div className="particle particle-5" />
-      </div>
+      {/* Ambient orbs */}
+      <div className="orb w-[600px] h-[600px] -top-48 -right-48" />
+      <div className="orb w-[400px] h-[400px] bottom-0 left-1/4" />
 
-      {/* Right accent stripe */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/3 hero-stripe hidden lg:block" />
-      
-      {/* Geometric decorations */}
-      <div className="floating-shape w-48 h-48 top-16 right-[15%] rotate-12 hidden xl:block animate-float" style={{ animationDelay: '-1s' }} />
-      <div className="floating-shape w-32 h-32 bottom-24 right-[25%] -rotate-6 hidden xl:block animate-float" style={{ animationDelay: '-3s' }} />
-      <div className="floating-shape w-24 h-24 top-1/3 right-[10%] rotate-45 hidden xl:block animate-float" style={{ animationDelay: '-5s' }} />
-
-      {/* Large logo decoration in background */}
-      <div className="absolute right-[5%] top-1/2 -translate-y-1/2 hidden xl:flex items-center justify-center">
-        <div className="relative animate-pulse-slow">
-          <div className="w-72 h-72 logo-decoration" />
-          <div className="absolute inset-4 logo-decoration" />
-          <div className="absolute inset-8 logo-decoration" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-8xl font-bold opacity-10 text-hero-dark">b!</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Content layout */}
+      {/* Content */}
       <div className="relative z-10 flex w-full h-full">
-        {/* Left content area */}
-        <div className={`flex flex-col justify-between py-8 md:py-10 px-6 md:px-8 lg:px-12 xl:px-16 w-full lg:w-1/2 xl:w-[45%] transition-all duration-500 ${isChatOpen ? 'lg:w-full xl:w-full' : ''}`}>
-          {/* Header with logo */}
-          <div className="flex items-center gap-4 animate-fade-up">
-            <img src={logoImage} alt="BIA" className="w-12 h-12 md:w-14 md:h-14 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300" />
-            <div className="flex items-center gap-3">
-              <span className="text-xl md:text-2xl text-hero-dark font-light">—</span>
-              <span className="text-xl md:text-2xl font-semibold text-hero-dark tracking-wide">flash</span>
-            </div>
-          </div>
+        {/* Left content */}
+        <div className={`flex flex-col justify-between py-8 lg:py-12 px-6 lg:px-16 w-full lg:w-1/2 transition-all duration-500 ${isChatOpen ? 'lg:w-full' : ''}`}>
+          
+          {/* Header */}
+          <header className="flex items-center gap-4 animate-fade-up">
+            <img 
+              src={logoImage} 
+              alt="BIA" 
+              className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl" 
+            />
+            <span className="text-foreground/40">—</span>
+            <span className="text-lg font-medium text-foreground/80">flash</span>
+          </header>
 
-          {/* Main headline */}
-          <div className="space-y-6 md:space-y-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            {/* Commercial badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 animate-shimmer">
-              <Sparkles className="w-4 h-4 text-hero-dark" />
-              <span className="text-sm font-medium text-hero-dark">Tecnologia que transforma negócios</span>
-            </div>
-
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-hero-dark">
-              <span className="italic inline-block animate-text-reveal" style={{ animationDelay: '0.2s' }}>Atendimento com IA</span>
-              <br />
-              <span className="italic inline-block animate-text-reveal" style={{ animationDelay: '0.4s' }}>na velocidade que</span>
-              <br />
-              <span className="italic inline-block animate-text-reveal" style={{ animationDelay: '0.6s' }}>seu cliente</span>
-              <br />
-              <span className="inline-flex items-center gap-3 animate-text-reveal" style={{ animationDelay: '0.8s' }}>
-                <span className="italic">merece</span>
-                <Zap className="w-8 h-8 md:w-10 md:h-10 text-hero-dark animate-pulse" />
+          {/* Main content */}
+          <div className="space-y-8 max-w-xl">
+            {/* Badge */}
+            <div className="animate-fade-up stagger-1">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-primary">
+                <Zap className="w-4 h-4" />
+                IA que transforma negócios
               </span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl lg:text-6xl font-semibold leading-[1.1] tracking-tight animate-fade-up stagger-2">
+              <span className="text-foreground">Atendimento</span>
+              <br />
+              <span className="text-primary">inteligente</span>
+              <br />
+              <span className="text-foreground/70">24 horas por dia</span>
             </h1>
 
-            {/* Value propositions */}
-            <div className="flex flex-wrap gap-3 md:gap-4">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs md:text-sm font-medium text-hero-dark">24/7 Disponível</span>
+            {/* Description */}
+            <p className="text-lg text-muted-foreground leading-relaxed animate-fade-up stagger-3">
+              Automatize até 80% do seu atendimento com nossa IA conversacional. 
+              Respostas instantâneas, clientes satisfeitos.
+            </p>
+
+            {/* Features */}
+            <div className="flex flex-wrap gap-4 animate-fade-up stagger-4">
+              <div className="flex items-center gap-2 text-sm text-foreground/60">
+                <Clock className="w-4 h-4 text-primary" />
+                <span>Sempre online</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm">
-                <span className="text-xs md:text-sm font-medium text-hero-dark">⚡ Respostas em segundos</span>
+              <div className="flex items-center gap-2 text-sm text-foreground/60">
+                <MessageSquare className="w-4 h-4 text-primary" />
+                <span>Respostas em segundos</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm">
-                <span className="text-xs md:text-sm font-medium text-hero-dark">🎯 100% Personalizada</span>
+              <div className="flex items-center gap-2 text-sm text-foreground/60">
+                <Shield className="w-4 h-4 text-primary" />
+                <span>100% seguro</span>
               </div>
             </div>
 
-            {/* BIA tagline */}
-            <div className="space-y-1">
-              <p className="text-xl md:text-2xl font-bold text-hero-dark">@bia</p>
-              <p className="text-base md:text-lg text-hero-medium">Inteligência artificial feita sob medida para seu negócio</p>
+            {/* CTA */}
+            <div className="flex items-center gap-6 animate-fade-up stagger-5">
+              <button
+                onClick={onOpenChat}
+                className="group inline-flex items-center gap-3 px-6 py-4 btn-primary text-white font-medium rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Testar a BIA
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+              
+              <div className="hidden sm:flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map((i) => (
+                    <div 
+                      key={i} 
+                      className="w-8 h-8 rounded-full bg-secondary border-2 border-background"
+                    />
+                  ))}
+                </div>
+                <span className="text-sm text-muted-foreground">
+                  +500 empresas
+                </span>
+              </div>
             </div>
+          </div>
 
-            {/* CTA Button */}
-            <button
-              onClick={onOpenChat}
-              className="group inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-white/95 hover:bg-white text-hero-dark font-semibold text-base md:text-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] cta-glow"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Testar a BIA agora
-              <span className="flex items-center justify-center w-8 h-8 bg-primary rounded-full transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110">
-                <ArrowRight className="w-4 h-4 text-white" />
-              </span>
-            </button>
-
-            {/* Social proof */}
-            <p className="text-sm text-hero-medium flex items-center gap-2">
-              <span className="flex -space-x-2">
-                <span className="w-6 h-6 rounded-full bg-white/40 border-2 border-white/60" />
-                <span className="w-6 h-6 rounded-full bg-white/40 border-2 border-white/60" />
-                <span className="w-6 h-6 rounded-full bg-white/40 border-2 border-white/60" />
-              </span>
-              +500 empresas já transformaram seu atendimento
+          {/* Footer */}
+          <div className="animate-fade-up stagger-5">
+            <p className="text-sm text-muted-foreground">
+              @bia • Inteligência artificial sob medida
             </p>
           </div>
-
-          {/* Bottom spacer */}
-          <div />
         </div>
 
-        {/* Right image area */}
+        {/* Right image */}
         <div className={`hidden lg:flex flex-1 items-end justify-center relative transition-all duration-500 ${isChatOpen ? 'lg:hidden' : ''}`}>
-          <img
-            src={biaHero}
-            alt="BIA - Assistente Virtual Inteligente"
-            className="h-[85%] w-auto object-contain object-bottom relative z-10 drop-shadow-2xl animate-fade-up hover:scale-[1.02] transition-transform duration-500"
-            style={{ animationDelay: '0.2s' }}
-          />
-          
-          {/* Online status badge */}
-          <div 
-            className="absolute top-20 right-8 xl:right-16 glass-yellow rounded-2xl px-5 py-3 shadow-lg animate-float z-20"
-            style={{ animationDelay: '-2s' }}
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-semibold text-hero-dark">Online agora</span>
-            </div>
-          </div>
-
-          {/* Stats badge */}
-          <div 
-            className="absolute top-40 left-4 xl:left-8 glass-yellow rounded-2xl px-5 py-3 shadow-lg animate-float z-20"
-            style={{ animationDelay: '-4s' }}
-          >
-            <div className="text-center">
-              <p className="text-2xl font-bold text-hero-dark">98%</p>
-              <p className="text-xs text-hero-medium">Satisfação</p>
-            </div>
-          </div>
-
-          {/* AI indicator badge */}
-          <div 
-            className="absolute bottom-32 right-4 xl:right-12 glass-yellow rounded-2xl px-5 py-3 shadow-lg animate-float z-20"
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🤖</span>
-              <div>
-                <p className="text-sm font-semibold text-hero-dark">IA Conversacional</p>
-                <p className="text-xs text-hero-medium">Respostas instantâneas</p>
+          {/* Image container */}
+          <div className="relative h-full flex items-end">
+            <img
+              src={biaHero}
+              alt="BIA"
+              className="h-[90%] w-auto object-contain object-bottom animate-fade-up"
+            />
+            
+            {/* Status card */}
+            <div className="absolute top-24 right-8 glass-card glow-border rounded-2xl px-4 py-3 animate-float">
+              <div className="flex items-center gap-3">
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-sm font-medium text-foreground">Online agora</span>
               </div>
+            </div>
+
+            {/* Stats card */}
+            <div className="absolute bottom-48 left-0 glass-card glow-border rounded-2xl px-5 py-4 animate-float" style={{ animationDelay: '-2s' }}>
+              <p className="text-2xl font-bold text-primary">98%</p>
+              <p className="text-xs text-muted-foreground">Satisfação</p>
             </div>
           </div>
         </div>

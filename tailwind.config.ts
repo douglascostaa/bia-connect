@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,8 +60,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        glow: {
-          DEFAULT: "hsl(var(--glow-primary))",
+        surface: {
+          1: "hsl(var(--surface-1))",
+          2: "hsl(var(--surface-2))",
+          3: "hsl(var(--surface-3))",
         },
       },
       borderRadius: {
@@ -82,11 +84,6 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      boxShadow: {
-        'glow': '0 0 40px hsla(48, 100%, 50%, 0.3)',
-        'glow-lg': '0 0 60px hsla(48, 100%, 50%, 0.4)',
-        'button': '0 4px 20px hsla(48, 100%, 50%, 0.4)',
       },
     },
   },

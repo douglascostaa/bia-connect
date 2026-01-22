@@ -11,52 +11,48 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setFadeOut(true);
-      setTimeout(onComplete, 500);
-    }, 1800);
+      setTimeout(onComplete, 400);
+    }, 1600);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center hero-gradient transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-400 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      {/* Decorative shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="floating-shape w-64 h-64 -top-16 -left-16 opacity-10" />
-        <div className="floating-shape w-48 h-48 bottom-20 -right-12 opacity-10" />
-        <div className="floating-shape w-32 h-32 top-1/4 right-1/4 opacity-10" />
-      </div>
+      {/* Ambient glow */}
+      <div className="orb w-96 h-96 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-      {/* Logo container */}
-      <div className="relative flex flex-col items-center gap-8">
-        <div className="animate-pulse-glow">
+      {/* Logo */}
+      <div className="relative flex flex-col items-center gap-6">
+        <div className="relative animate-glow-pulse rounded-2xl">
           <img
             src={logoImage}
             alt="BIA Logo"
-            className="w-28 h-28 rounded-2xl shadow-2xl"
+            className="w-20 h-20 rounded-2xl"
           />
         </div>
         
-        {/* Brand text */}
-        <div className="flex items-center gap-3 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-          <span className="text-3xl font-light text-hero-dark">—</span>
-          <span className="text-3xl font-semibold text-hero-dark tracking-wide">flash</span>
-        </div>
-        
-        {/* Loading indicator */}
-        <div className="flex gap-2 animate-fade-up" style={{ animationDelay: '0.5s' }}>
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="w-2.5 h-2.5 rounded-full bg-hero-dark/30 animate-pulse"
-              style={{ animationDelay: `${i * 0.15}s` }}
-            />
-          ))}
+        {/* Loading bar */}
+        <div className="w-32 h-0.5 bg-secondary rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-primary rounded-full animate-[loading_1.5s_ease-in-out]"
+            style={{ 
+              animation: 'loading 1.5s ease-in-out forwards',
+            }}
+          />
         </div>
       </div>
+
+      <style>{`
+        @keyframes loading {
+          0% { width: 0%; }
+          100% { width: 100%; }
+        }
+      `}</style>
     </div>
   );
 };
