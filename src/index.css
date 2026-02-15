@@ -16,9 +16,9 @@
     --popover: 220 20% 6%;
     --popover-foreground: 0 0% 95%;
 
-    /* Primary - Vibrant Orange */
-    --primary: 28 100% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Vibrant Yellow */
+    --primary: 45 100% 55%;
+    --primary-foreground: 0 0% 10%;
 
     --secondary: 220 15% 15%;
     --secondary-foreground: 0 0% 90%;
@@ -26,15 +26,15 @@
     --muted: 220 15% 12%;
     --muted-foreground: 0 0% 55%;
 
-    --accent: 28 100% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 15%;
     --input: 220 15% 12%;
-    --ring: 28 100% 55%;
+    --ring: 45 100% 55%;
 
     --radius: 0.75rem;
 
@@ -43,19 +43,19 @@
     --surface-2: 220 18% 10%;
     --surface-3: 220 15% 14%;
     
-    /* Orange glow */
-    --glow-orange: 28 100% 55%;
-    --glow-soft: 28 100% 50%;
+    /* Yellow glow */
+    --glow-orange: 45 100% 55%;
+    --glow-soft: 45 100% 50%;
 
     /* Sidebar */
     --sidebar-background: 220 20% 6%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 28 100% 55%;
+    --sidebar-primary: 45 100% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 15% 15%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 220 15% 15%;
-    --sidebar-ring: 28 100% 55%;
+    --sidebar-ring: 45 100% 55%;
   }
 }
 
@@ -108,7 +108,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(28 100% 55%), transparent, hsl(28 100% 55%));
+    background: linear-gradient(135deg, hsl(45 100% 55%), transparent, hsl(45 100% 55%));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0.5;
@@ -116,18 +116,18 @@
 
   /* Orange accent glow */
   .glow-orange {
-    box-shadow: 0 0 40px hsla(28, 100%, 55%, 0.15), 0 0 80px hsla(28, 100%, 55%, 0.08);
+    box-shadow: 0 0 40px hsla(45, 100%, 55%, 0.15), 0 0 80px hsla(45, 100%, 55%, 0.08);
   }
 
   .glow-orange-strong {
-    box-shadow: 0 0 30px hsla(28, 100%, 55%, 0.3), 0 0 60px hsla(28, 100%, 55%, 0.15);
+    box-shadow: 0 0 30px hsla(45, 100%, 55%, 0.3), 0 0 60px hsla(45, 100%, 55%, 0.15);
   }
 
   /* CTA Button */
   .btn-primary {
     @apply relative overflow-hidden;
-    background: linear-gradient(135deg, hsl(28 100% 55%) 0%, hsl(32 100% 50%) 100%);
-    box-shadow: 0 4px 20px hsla(28, 100%, 55%, 0.4), inset 0 1px 0 hsla(0, 0%, 100%, 0.2);
+    background: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(48 100% 50%) 100%);
+    box-shadow: 0 4px 20px hsla(45, 100%, 55%, 0.4), inset 0 1px 0 hsla(0, 0%, 100%, 0.2);
   }
 
   .btn-primary::before {
@@ -146,7 +146,7 @@
   /* Floating orbs */
   .orb {
     @apply absolute rounded-full blur-3xl pointer-events-none;
-    background: radial-gradient(circle, hsla(28, 100%, 55%, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, hsla(45, 100%, 55%, 0.15) 0%, transparent 70%);
   }
 
   /* Status dot */
@@ -168,7 +168,7 @@
   }
 
   .message-user {
-    background: linear-gradient(135deg, hsl(28 100% 55%) 0%, hsl(32 100% 48%) 100%);
+    background: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(48 100% 48%) 100%);
   }
 
   .message-assistant {
@@ -184,8 +184,8 @@
   }
 
   .input-glass:focus-within {
-    border-color: hsl(28 100% 55%);
-    box-shadow: 0 0 20px hsla(28, 100%, 55%, 0.15), inset 0 0 20px hsla(28, 100%, 55%, 0.05);
+    border-color: hsl(45 100% 55%);
+    box-shadow: 0 0 20px hsla(45, 100%, 55%, 0.15), inset 0 0 20px hsla(45, 100%, 55%, 0.05);
   }
 }
 
@@ -269,10 +269,10 @@
 
 @keyframes glow-pulse {
   0%, 100% { 
-    box-shadow: 0 0 20px hsla(28, 100%, 55%, 0.2);
+    box-shadow: 0 0 20px hsla(45, 100%, 55%, 0.2);
   }
   50% { 
-    box-shadow: 0 0 40px hsla(28, 100%, 55%, 0.4);
+    box-shadow: 0 0 40px hsla(45, 100%, 55%, 0.4);
   }
 }
 
@@ -290,7 +290,7 @@
 /* Typing indicator */
 .typing-dot {
   @apply w-2 h-2 rounded-full;
-  background: hsl(28 100% 55%);
+  background: hsl(45 100% 55%);
   animation: typing-bounce 1.4s ease-in-out infinite;
 }
 
@@ -312,10 +312,10 @@
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: hsla(28, 100%, 55%, 0.3);
+  background: hsla(45, 100%, 55%, 0.3);
   border-radius: 2px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: hsla(28, 100%, 55%, 0.5);
+  background: hsla(45, 100%, 55%, 0.5);
 }
